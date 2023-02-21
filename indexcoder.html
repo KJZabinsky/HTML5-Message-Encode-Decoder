@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+ <style>
+      h1 {
+        text-align: center;
+        color: red;
+        text-shadow: 0 0 5px #fff, 0 0 10px #e60073;
+      }
+    </style>
+        <style>
+      .textarea1 {
+        width: 50%;
+        height: 10px;
+        font-size: 16px;
+        font-family: Arial;
+        padding: 10px;
+        border-radius: 5px;
+        border: 3px solid #293437;
+        resize: none;
+      }
+    </style>
+<style>
+      body {
+        background: #293437;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        font-family: 'Astloch';
+      }
+      .text {
+        color: red;
+        font-family: 'Astloch', sans-serif;
+        font-size: 20px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      .text2 {
+        color: #93E5BE;
+        font-family: 'Astloch', sans-serif;
+        font-size: 30px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      .text3 {
+        color: #93E5BE;
+        font-family: 'Astloch', sans-serif;
+        font-size: 40px;
+        transition: 0.5s ease;
+        text-align: center;
+      }
+      div {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      @keyframes fly {
+        0% { transform: translate(0px,0px) rotate(0deg); }
+        25% { transform: translate(0px,0px) rotate(20deg); }
+        50% { transform: translate(0px,0px) rotate(-20deg); }
+        75% { transform: translate(0px 0px) rotate(0deg); }
+        100% { transform: translate(0px,0px) rotate(0deg); }
+      }
+      @keyframes down {
+        0% { transform: translate(0px,0px) rotate(0deg); }
+        25% { transform: translate(0px,0px) rotate(0deg); }
+        50% { transform: translate(0px,0px) rotate(0deg); }
+        75% { transform: translate(0px 0px) rotate(0deg); }
+        100% { transform: translate(0px,0px) rotate(0deg); }
+      }
+      @media only screen and (max-width: 768px) {
+        body {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+      }
+    </style>
+<style>
+    body {
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+    
+    p {
+      font-size: 1.2em;
+    }
+    
+    textarea {
+      width: 80%;
+      height: 100px;
+      font-size: 1.2em;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    input[type="number"] {
+      font-size: 1.2em;
+      padding: 5px;
+      width: 20%;
+      margin-bottom: 10px;
+    }
+    
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+    
+    #output {
+      width: 80%;
+      height: 100px;
+      font-size: 1.2em;
+      padding: 10px;
+    }
+  </style>
+<html>
+<center><head>
+  <title>Encoder and Decoder</title>
+  <script>
+    function encode() {
+      let input = document.getElementById("input").value;
+      let output = "";
+      let shift = parseInt(document.getElementById("shift").value);
+      for (let i = 0; i < input.length; i++) {
+        let char = input[i];
+        if (char.match(/[a-z]/i)) {
+          let code = input.charCodeAt(i);
+          if (code >= 65 && code <= 90) {
+            char = String.fromCharCode(((code - 65 + shift) % 26) + 65);
+          }
+          else if (code >= 97 && code <= 122) {
+            char = String.fromCharCode(((code - 97 + shift) % 26) + 97);
+          }
+        }
+        output += char;
+      }
+      document.getElementById("output").value = output;
+    }
+    
+    function decode() {
+      let input = document.getElementById("input").value;
+      let output = "";
+      let shift = parseInt(document.getElementById("shift").value);
+      for (let i = 0; i < input.length; i++) {
+        let char = input[i];
+        if (char.match(/[a-z]/i)) {
+          let code = input.charCodeAt(i);
+          if (code >= 65 && code <= 90) {
+            char = String.fromCharCode(((code - 65 - shift + 26) % 26) + 65);
+          }
+          else if (code >= 97 && code <= 122) {
+            char = String.fromCharCode(((code - 97 - shift + 26) % 26) + 97);
+          }
+        }
+        output += char;
+      }
+      document.getElementById("output").value = output;
+    }
+  </script>
+</head>
+<body>
+<div>
+  <h1>Encoder and Decoder</h1>
+  <p>Enter text to encode or decode:</p>
+  <textarea id="input"></textarea><br>
+  <p>Enter a frequency to decode:</p>
+  <input type="number" id="shift"><br><br>
+  <button onclick="encode()">Encode</button>
+  <button onclick="decode()">Decode</button><br><br>
+  <p>Output:</p>
+  <textarea rows="5" id="output" readonly></textarea><center/>
+  <h1>Directions<h1>
+  <h4>Encode MSG<h4>
+  <p>1. Enter code to encode in first textarea<p>
+  <p>2. Enter a random frequency (this is a umber to make sure other people cannot decode your message. Make this is random and tell this to the person who you are sending this to.)<p>
+  <p>3. Click Encode<p>
+  <p>4. Copy output and tell the reciever this code via email or any other form of communication.<p>
+  <h4>Decode MSG<h4>
+  <p>1. Enter text given from sender into first textarea<p>
+  <p>2. Enter the frequency given from the sender<p>
+  <p>3. Click Decode<p>
+  <p>4. Read the output given<p>
+  <h1>HTML5 Build X.NoRAYTC.THJSD.7KB5<h1>
+  <h1>Copyright Killian Zabinsky ©<h1>
+</body>
+</html>
